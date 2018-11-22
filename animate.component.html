@@ -1,0 +1,86 @@
+<div [@changeStateAnim]="currentState">
+
+</div>
+
+<!--Multi step form-->
+<form id="msform">
+    <!--progressbar-->
+    <ul id="progressbar">
+        <li class="active">Kimlik Bilgileri</li>
+        <li [ngClass]="{'active':currentIndex>=1}">Eğitim Durumu</li>
+        <li [ngClass]="{'active':currentIndex>=2}">Çalışma Geçmişi</li>
+        <li [ngClass]="{'active':currentIndex>=3}">Referanslar</li>
+        <li [ngClass]="{'active':currentIndex>=4}">Mesleki Bilgiler</li>
+    </ul>
+
+    <!-- fieldsets -->
+    <fieldset *ngIf="currentIndex==0">
+        <h2 class="fs-title">Kimlik Bilgileri</h2>
+        <h3 class="fs-subtitle">1. Adım</h3>
+        <input type="text" name="tcNo" placeholder="TC Kimlik Numarası">
+        <input type="text" name="name" placeholder="İsim">
+        <input type="text" name="surName" placeholder="Soy İsim">
+        <label>Cinsiyet<input type="radio" name="gender" style="width:5%;"> <span></span> Erkek </label>
+        <label><input type="radio" name="gender" style="width:5%;"> <span></span> Kadın </label>
+        <input type="text" name="address" placeholder="Adres">
+        <input type="text" name="maritalStat" placeholder="Medeni Durum">
+        <input type="email" name="email" placeholder="E-Posta">
+        <input type="text" name="phone" placeholder="Telefon">
+        <input type="button" #next name="next" class="next action-button" value="Next" (click)="nextFs()">
+    </fieldset>
+
+    <fieldset *ngIf="currentIndex==1">
+        <h2 class="fs-title">Eğitim Durumu</h2>
+        <h3 class="fs-subtitle">2. Adım</h3>
+        <input type="text" name="cityLocation" placeholder="Bulunduğu İl">
+        <input type="text" name="school" placeholder="Okul">
+        <input type="text" name="department" placeholder="Bölüm Adı">
+        <input type="text" name="studyTime" placeholder="Eğitim Süresi">
+        <input type="text" name="degree" placeholder="Derece">
+        <input type="text" name="startYear" placeholder="Başlangıç Yılı">
+        <input type="text" name="finishYear" placeholder="Bitiş Yılı">
+        <input type="text" name="statement" placeholder="Açıklama">
+
+        <input type="button" name="previous" class="previous action-button" value="Previous" (click)="prevFs()">
+        <input type="button" name="next" class="next action-button" value="Next" (click)="nextFs()">
+    </fieldset>
+
+    <fieldset *ngIf="currentIndex==2">
+        <h2 class="fs-title">Çalışma Geçmişi</h2>
+        <h3 class="fs-subtitle">3. Adım</h3>
+        <input type="text" name="foundationName" placeholder="Kurum Adı">
+        <input type="text" name="currentCity" placeholder="Bulunduğu Şehir">
+        <input type="text" name="employment" placeholder="Görev">
+        <input type="text" name="salary" placeholder="Ücret">
+        <input type="text" name="managerName" placeholder="Yönetici Adı">
+        <input type="text" name="managerContactInfo" placeholder="Yönetici İletişim Bilgisi">
+        <input type="datetime" name="beginDate" placeholder="Giriş Tarihi">
+        <input type="datetime" name="leftDate" placeholder="Çıkış Tarihi">
+        <input type="text" name="whyLeft" placeholder="Ayrılma Sebebi">
+        <input type="checkbox" name="interview" id="interview">
+        <label for="interview">Bu iş yeri ile görüşme yapılsın mı?</label>
+        <textarea name="address" placeholder="Address" rows="3"></textarea>
+
+        <input type="button" name="previous" class="previous action-button" value="Previous" (click)="prevFs()">
+        <input type="button" name="next" class="next action-button" value="Next" (click)="nextFs()">
+    </fieldset>
+
+    <fieldset *ngIf="currentIndex==3">
+        <h2 class="fs-title">Referanslar</h2>
+        <h3 class="fs-subtitle">3. Adım</h3>
+        <input type="radio" name="isOurPersonel" id="isOurPersonel">
+        <label for="isOurPersonel">Firmamızda Çalışan Personel mi?</label>
+        <input type="radio" name="isKin" id="isKin">
+        <label for="isKin">Referansınız Akrabanız mı?</label>
+        <input type="text" name="refFoundationName" placeholder="Kurum Adı">
+        <input type="text" name="refName" placeholder="Adı">
+        <input type="text" name="refSurname" placeholder="Soyadı">
+        <input type="text" name="refEmployment" placeholder="Görev">
+        <input type="text" name="refContactInfo" placeholder="İletişim Bilgisi">
+        <input type="text" name="refStatement" placeholder="Açıklama">
+
+        <input type="button" name="previous" class="previous action-button" value="Previous" (click)="prevFs()">
+
+        <input type="submit" name="submit" class="submit action-button" value="Submit">
+    </fieldset>
+</form>
