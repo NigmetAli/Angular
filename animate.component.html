@@ -11,6 +11,7 @@
         <li [ngClass]="{'active':currentIndex>=2}">Çalışma Geçmişi</li>
         <li [ngClass]="{'active':currentIndex>=3}">Referanslar</li>
         <li [ngClass]="{'active':currentIndex>=4}">Mesleki Bilgiler</li>
+        <li [ngClass]="{'active':currentIndex>=5}">Diğer Bilgiler</li>
     </ul>
 
     <!-- fieldsets -->
@@ -26,6 +27,7 @@
         <input type="text" name="maritalStat" placeholder="Medeni Durum">
         <input type="email" name="email" placeholder="E-Posta">
         <input type="text" name="phone" placeholder="Telefon">
+        <!-- Buttons -->
         <input type="button" #next name="next" class="next action-button" value="Next" (click)="nextFs()">
     </fieldset>
 
@@ -35,12 +37,12 @@
         <input type="text" name="cityLocation" placeholder="Bulunduğu İl">
         <input type="text" name="school" placeholder="Okul">
         <input type="text" name="department" placeholder="Bölüm Adı">
-        <input type="text" name="studyTime" placeholder="Eğitim Süresi">
+        <input type="text" name="educationTime" placeholder="Eğitim Süresi">
         <input type="text" name="degree" placeholder="Derece">
         <input type="text" name="startYear" placeholder="Başlangıç Yılı">
         <input type="text" name="finishYear" placeholder="Bitiş Yılı">
         <input type="text" name="statement" placeholder="Açıklama">
-
+        <!-- Buttons -->
         <input type="button" name="previous" class="previous action-button" value="Previous" (click)="prevFs()">
         <input type="button" name="next" class="next action-button" value="Next" (click)="nextFs()">
     </fieldset>
@@ -55,19 +57,18 @@
         <input type="text" name="managerName" placeholder="Yönetici Adı">
         <input type="text" name="managerContactInfo" placeholder="Yönetici İletişim Bilgisi">
         <input type="datetime" name="beginDate" placeholder="Giriş Tarihi">
-        <input type="datetime" name="leftDate" placeholder="Çıkış Tarihi">
-        <input type="text" name="whyLeft" placeholder="Ayrılma Sebebi">
+        <input type="datetime" name="leavingDate" placeholder="Çıkış Tarihi">
+        <input type="text" name="whyLeaving" placeholder="Ayrılma Sebebi">
         <input type="checkbox" name="interview" id="interview">
         <label for="interview">Bu iş yeri ile görüşme yapılsın mı?</label>
-        <textarea name="address" placeholder="Address" rows="3"></textarea>
-
+        <!-- Buttons -->
         <input type="button" name="previous" class="previous action-button" value="Previous" (click)="prevFs()">
         <input type="button" name="next" class="next action-button" value="Next" (click)="nextFs()">
     </fieldset>
 
     <fieldset *ngIf="currentIndex==3">
         <h2 class="fs-title">Referanslar</h2>
-        <h3 class="fs-subtitle">3. Adım</h3>
+        <h3 class="fs-subtitle">4. Adım</h3>
         <input type="radio" name="isOurPersonel" id="isOurPersonel">
         <label for="isOurPersonel">Firmamızda Çalışan Personel mi?</label>
         <input type="radio" name="isKin" id="isKin">
@@ -78,9 +79,54 @@
         <input type="text" name="refEmployment" placeholder="Görev">
         <input type="text" name="refContactInfo" placeholder="İletişim Bilgisi">
         <input type="text" name="refStatement" placeholder="Açıklama">
-
+        <!-- Buttons -->
         <input type="button" name="previous" class="previous action-button" value="Previous" (click)="prevFs()">
+        <input type="button" name="next" class="next action-button" value="Next" (click)="nextFs()">
 
+    </fieldset>
+
+    <fieldset *ngIf="currentIndex==4">
+        <h2 class="fs-title">Mesleki Bilgiler</h2>
+        <h3 class="fs-subtitle">5. Adım</h3>
+        <input type="text" name="profession" placeholder="Meslek">
+        <input type="text" name="experience" placeholder="Tecrübe">
+        <!-- Buttons -->
+        <input type="button" name="previous" class="previous action-button" value="Previous" (click)="prevFs()">
+        <input type="button" name="next" class="next action-button" value="Next" (click)="nextFs()">
+    </fieldset>
+
+    <fieldset *ngIf="currentIndex==5">
+        <h2 class="fs-title">Diğer Bilgiler</h2>
+        <h3 class="fs-subtitle">6. Adım</h3>
+        <h3>Askerlik Durumu</h3>
+        <input type="radio" name="militaryStatus" id="militaryStatus">
+        <label for="militaryStatus">Askerliğini Yaptı</label>
+        <input type="radio" name="militaryStatus" id="militaryStatus">
+        <label for="militaryStatus">Tecilli</label>
+        <input type="radio" name="militaryStatus" id="militaryStatus">
+        <label for="militaryStatus">Muaf</label>
+        <input type="radio" name="militaryStatus" id="militaryStatus">
+        <label for="militaryStatus">Bedelli</label>
+
+        <h3>Adli Kayıt</h3>
+        <h4>Trafik Suçları Dahil Hiç Yargılandı mı?</h4>
+        <input type="radio" name="isJudgement" id="isJudgement">
+        <label for="isJudgement">Evet</label>
+        <input type="radio" name="isJudgement" id="isJudgement">
+        <label for="isJudgement">Hayır</label>
+        <h4>Yargılandıysa Hiç Ceza Aldı mı?</h4>
+        <input type="radio" name="punished" id="punished">
+        <label for="punished">Evet</label>
+        <input type="radio" name="punished" id="punished">
+        <label for="punished">Hayır</label>
+        <h4>Adli Sicil Kaydı mı?</h4>
+        <input type="radio" name="criminalRecord" id="criminalRecord">
+        <label for="criminalRecord">Evet</label>
+        <input type="radio" name="criminalRecord" id="criminalRecord">
+        <label for="criminalRecord">Hayır</label>
+        <input type="text" name="judicialStatement" placeholder="Açıklama">
+        <!-- Buttons -->
+        <input type="button" name="previous" class="previous action-button" value="Previous" (click)="prevFs()">
         <input type="submit" name="submit" class="submit action-button" value="Submit">
     </fieldset>
 </form>
